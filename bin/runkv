@@ -1,0 +1,2 @@
+#!/bin/bash
+python /Applications/Splunk/etc/apps/gp_ta/bin/kvConnect.py
