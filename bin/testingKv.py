@@ -35,6 +35,7 @@ service = client.connect(
 
 def runTests():
     print("testing")
+    #place tests here
 
 def addElements(numb):
     import datetime
@@ -56,72 +57,7 @@ except IndexError:
     print("no arguments provided")
     sys.exit()
 
-def objectFromRow(row, fieldNames):
-    pass
-    masterDictionary = {}
-    zipped = zip(fieldNames,row)
-    for field, value in zipped:
-        #print("value:{}, key:{}".format(v,k))
-        masterDictionary[field] = value
 
-    #print(masterDictionary)
-    return masterDictionary
-    #for val, name in zip(row, fieldNames):
-        #print(val, name)
-
-
-def readOneCSV(csvPath, kvName, keyString):
-    with open(csvPath) as csv_file:
-        f_reader = csv.reader(csv_file, delimiter=',')
-        temp_dictionary = {}        
-        row_count = sum(1 for row in csv_file)
-        csv_file.seek(0)
-        firstLine = True
-        fieldNames = None
-        rowNumber = 2
-        if row_count > 1:
-           # print("past row count check")
-            lookupReference = getRespectiveTableDictionary(kvName)
-            lookupTable = lookupReference[1]
-            for row in f_reader:
-                #print("in f_reader")
-                #print(row)
-                if not firstLine:
-                    obj = objectFromRow(row, fieldNames)
-                    sObj = str(obj)
-                    addIfDoesntExist(sObj, obj, lookupReference[0].keys(), lookupTable)
-                else:
-                    firstLine = False
-                    fieldNames = row 
-                    del fieldNames[-1]
-
-
-def addIfDoesntExist(sObj, obj, lookupKeys, table):
-    if sObj not in lookupKeys:
-        print("adding obj:\n{}".format(obj))
-        table.data.insert(json.dumps(obj))
-
-def getRespectiveTableDictionary(lookupName):
-    print(lookupName)
-    masterDictionary = {}
-    kvo = service.kvstore[lookupName]
-    table = kvo.data.query()
-    print(type(table))
-    print(len(table))
-    for r in table:
-        print(r)
-        nokey = r.pop('_key')
-        __ = r.pop('_user')
-        #___ = r.pop('wait')
-        masterDictionary[str(r)] = None        
-        #print(r)
-        #print("user: {} wait: {}".format(__,___ ))
-        #import sys as _
-        #print(masterDictionary)
-        #print(table)
-        
- #   _.exit()
-    return (masterDictionary, kvo)
 
     
 

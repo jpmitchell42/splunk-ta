@@ -10,8 +10,8 @@ config = {
 }
 
 csvDictionary = {
-    ('sompo_load_balancer_vips', 'IPAddr'):'load_balancer_vips.csv',
-    ('sompo_assets', 'ip'): 'assets.csv'
+    ('sompo_load_balancer_vips', 'IPAddr'):'/Applications/Splunk/etc/apps/gp_ta/bin/load_balancer_vips.csv',
+    ('sompo_assets', 'ip'): '/Applications/Splunk/etc/apps/gp_ta/bin/assets.csv'
 }
 
 devDictionary = {
