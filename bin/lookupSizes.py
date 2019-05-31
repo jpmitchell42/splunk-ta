@@ -1,4 +1,4 @@
-import requests, json, csv, urllib3
+import requests, json, csv
 import splunklib.client as client
 
 from config import config as c, csvDictionary, devDictionary

@@ -22,17 +22,6 @@ service = client.connect(
 )
 
 
-
-service = client.connect(
-    host=HOST,
-    port=PORT,
-    username=USERNAME,
-    password=PASSWORD,
-    app=APP,
-    owner=OWNER
-)
-
-
 def runTests():
     print("testing")
     #place tests here
